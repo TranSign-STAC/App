@@ -19,13 +19,13 @@ class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        iconTheme: IconThemeData(color: TransignColors.BlackScale),
+        iconTheme: const IconThemeData(color: TransignColors.BlackScale),
         title: title == null
             ? SvgPicture.asset('assets/images/small_logo.svg')
             : title,
         leading: enableBackButton
             ? IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () => Navigator.of(context).pop(),
               )
             : null,

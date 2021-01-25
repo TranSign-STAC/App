@@ -18,8 +18,8 @@ class BottomButton extends StatelessWidget {
     Color fontColor =
         this.enabled ? Colors.white : TransignColors.BlackScale[400];
     FontWeight fontWeight = this.enabled ? FontWeight.w700 : FontWeight.w400;
-    return GestureDetector(
-      onTap: onPressed,
+    return InkWell(
+      onTap: this.enabled ? onPressed : null,
       child: Container(
         child: Container(
           child: Text(
@@ -33,7 +33,7 @@ class BottomButton extends StatelessWidget {
           ),
           width: 375,
           height: 56,
-          padding: EdgeInsets.symmetric(
+          padding: const EdgeInsets.symmetric(
             vertical: 16,
           ),
           decoration: BoxDecoration(color: buttonColor),

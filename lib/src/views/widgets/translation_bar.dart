@@ -13,10 +13,10 @@ class TranslationBar extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                SizedBox(
-                  child: Text(
+                const SizedBox(
+                  child: const Text(
                     "한국어",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -25,22 +25,22 @@ class TranslationBar extends StatelessWidget {
                   ),
                   width: 159,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
                 SvgPicture.asset(
-                  "assets/images/crossed_arrows.svg",
+                  "assets/images/crossed_arrows_small.svg",
                   width: 24,
                   height: 24,
                   fit: BoxFit.cover,
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 8,
                 ),
-                SizedBox(
-                  child: Text(
+                const SizedBox(
+                  child: const Text(
                     "수어",
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w700,
@@ -55,11 +55,11 @@ class TranslationBar extends StatelessWidget {
             ),
             width: 375,
             height: 44,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 8,
               vertical: 10,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Colors.white,
             ),
           ),
