@@ -61,7 +61,8 @@ flutter:
     # example:
     assets:
         - assets/images/big_logo.svg
-        - assets/images/crossed_arrows.svg
+        - assets/images/crossed_arrows_big.svg
+        - assets/images/crossed_arrows_small.svg
         - assets/images/small_logo.svg
     fonts:
         - family: NotoSans
