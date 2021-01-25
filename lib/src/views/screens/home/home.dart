@@ -1,4 +1,5 @@
 import 'package:app/src/configs/theme.dart';
+import 'package:app/src/views/screens/home/widgets/translating_dialog.dart';
 import 'package:app/src/views/widgets/appbar.dart';
 import 'package:app/src/views/widgets/bottom_button.dart';
 import 'package:app/src/views/widgets/translation_bar.dart';
@@ -19,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TranslationBar(),
           TextField(
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w400,
               ),
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(24.0),
+              decoration: const InputDecoration(
+                contentPadding: const EdgeInsets.all(24.0),
                 border: InputBorder.none,
                 hintText: '번역할 텍스트를 입력해주세요.',
               ),
@@ -39,7 +40,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  BottomButton("번역하기", enabled: this.translationButtonEnabled)
+                  BottomButton("번역하기",
+                      onPressed: () => {
+                            showDialog(
+                                context: context,
+                                builder: (BuildContext dialogContext) {
+                                  return TranslatingDialog();
+                                })
+                          },
+                      enabled: this.translationButtonEnabled)
                 ],
               ),
             ),
@@ -61,30 +70,30 @@ Widget _drawer() {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 16),
+            padding: const EdgeInsets.only(left: 16),
             child: SvgPicture.asset("assets/images/big_logo.svg"),
           ),
-          Padding(
-            padding: EdgeInsets.only(top: 48),
+          const Padding(
+            padding: const EdgeInsets.only(top: 48),
           ),
-          ListTile(
-            title: Text(
+          const ListTile(
+            title: const Text(
               "홈",
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w700,
               ),
             ),
           ),
-          ListTile(
-            title: Text(
+          const ListTile(
+            title: const Text(
               "번역기록",
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w400,
               ),
             ),
           ),
-          ListTile(
-            title: Text(
+          const ListTile(
+            title: const Text(
               "번역즐겨찾기",
               style: TextStyle(
                 fontWeight: FontWeight.w400,
@@ -122,7 +131,7 @@ Widget _drawer() {
         ],
       ),
       width: 250,
-      padding: EdgeInsets.only(
+      padding: const EdgeInsets.only(
         top: 64,
         bottom: 40,
       ),
