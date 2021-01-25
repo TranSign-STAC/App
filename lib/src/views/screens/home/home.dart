@@ -130,7 +130,6 @@ Widget _drawer() {
           ),
         ],
       ),
-      width: 250,
       padding: const EdgeInsets.only(
         top: 64,
         bottom: 40,

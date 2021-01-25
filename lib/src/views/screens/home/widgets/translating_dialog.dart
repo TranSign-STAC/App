@@ -47,7 +47,6 @@ class TranslatingDialog extends StatelessWidget {
           ],
         ),
       ),
-      width: MediaQuery.of(context).size.width,
     );
     return TransignDialog(
       "취소",
