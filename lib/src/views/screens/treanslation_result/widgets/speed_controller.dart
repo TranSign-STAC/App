@@ -8,7 +8,7 @@ class SpeedController extends StatefulWidget {
 }
 
 class _SpeedControllerState extends State<SpeedController> {
-  double _handlerValue = 50;
+  double _handlerValue = 10;
   @override
   Widget build(BuildContext context) {
     SvgPicture speedmeterIcon = SvgPicture.asset(
