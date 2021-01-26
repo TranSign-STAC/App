@@ -65,6 +65,7 @@ flutter:
         - assets/images/crossed_arrows_big.svg
         - assets/images/crossed_arrows_small.svg
         - assets/images/small_logo.svg
+        - assets/images/speedmeter.svg
     fonts:
         - family: NotoSans
           fonts:
