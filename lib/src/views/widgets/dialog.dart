@@ -17,7 +17,7 @@ class TransignDialog extends StatelessWidget {
         this.content,
         FractionallySizedBox(
           widthFactor: 1,
-          child: InkWell(
+          child: GestureDetector(
             onTap: this.actionCallback,
             child: Container(
               height: 48,
