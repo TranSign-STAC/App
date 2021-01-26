@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TranslatingDialog extends StatelessWidget {
+  const TranslatingDialog(this.cancelCallback);
+  final VoidCallback cancelCallback;
   @override
   Widget build(BuildContext context) {
     Widget content = Container(
@@ -51,7 +53,7 @@ class TranslatingDialog extends StatelessWidget {
     return TransignDialog(
       "취소",
       content: content,
-      actionCallback: () => {Navigator.of(context).pop()},
+      actionCallback: this.cancelCallback,
     );
   }
 }
