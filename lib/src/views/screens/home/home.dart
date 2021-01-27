@@ -4,11 +4,10 @@ import 'package:app/src/configs/theme.dart';
 import 'package:app/src/views/screens/treanslation_result/translation_result.dart';
 import 'package:app/src/views/widgets/appbar.dart';
 import 'package:app/src/views/widgets/bottom_button.dart';
+import 'package:app/src/views/widgets/translating_dialog.dart';
 import 'package:app/src/views/widgets/translation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import 'widgets/translating_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
