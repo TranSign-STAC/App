@@ -12,6 +12,7 @@ class TranslationBar extends StatelessWidget {
         children: [
           Container(
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   child: const Text(
@@ -50,10 +51,8 @@ class TranslationBar extends StatelessWidget {
                   width: 160,
                 ),
               ],
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
             ),
-            width: 375,
+            width: MediaQuery.of(context).size.width,
             height: 44,
             padding: const EdgeInsets.symmetric(
               horizontal: 8,
