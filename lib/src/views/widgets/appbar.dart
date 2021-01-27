@@ -4,20 +4,31 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const TransignAppBar(
-      {this.title, this.enableBackButton = false, this.actions});
+  const TransignAppBar({
+    this.title,
+    this.actions,
+    this.color = Colors.white,
+    this.enableBackButton = false,
+    this.enableDarkMode = false,
+  });
   final Widget title;
-  final bool enableBackButton;
   final List<Widget> actions;
+  final Color color;
+  final bool enableBackButton;
+  final bool enableDarkMode;
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
 
   @override
   Widget build(BuildContext context) {
+    String backButtonPath = this.enableDarkMode
+        ? 'assets/images/back_arrow_white.svg'
+        : 'assets/images/back_arrow_black.svg';
     return AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: this.color,
         elevation: 0,
+        brightness: this.enableDarkMode ? Brightness.dark : Brightness.light,
         centerTitle: true,
         iconTheme: const IconThemeData(color: TransignColors.BlackScale),
         title: title == null
@@ -25,7 +36,7 @@ class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
             : title,
         leading: enableBackButton
             ? IconButton(
-                icon: const Icon(Icons.arrow_back),
+                icon: SvgPicture.asset(backButtonPath),
                 onPressed: () => Navigator.of(context).pop(),
               )
             : null,

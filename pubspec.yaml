@@ -29,6 +29,9 @@ dependencies:
     cupertino_icons: ^1.0.0
     flutter_svg: ^0.18.1
     flutter_xlider: ^3.4.0
+    camera: ^0.7.0
+    path_provider: ^1.6.27
+    path: ^1.7.0
 
 dev_dependencies:
     flutter_test:
@@ -61,9 +64,13 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
     assets:
+        - assets/images/back_arrow_black.svg
+        - assets/images/back_arrow_white.svg
         - assets/images/big_logo.svg
         - assets/images/crossed_arrows_big.svg
         - assets/images/crossed_arrows_small.svg
+        - assets/images/flash.svg
+        - assets/images/reverse_camera.svg
         - assets/images/small_logo.svg
         - assets/images/speedmeter.svg
     fonts:
