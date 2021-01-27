@@ -12,36 +12,43 @@ class TransignDialog extends StatelessWidget {
   final VoidCallback actionCallback;
   @override
   Widget build(BuildContext context) {
+    const actionButtonBorderRadius = const BorderRadius.only(
+      bottomLeft: const Radius.circular(8),
+      bottomRight: const Radius.circular(8),
+    );
+    Widget actionButton = FractionallySizedBox(
+      widthFactor: 1,
+      child: Container(
+        height: 48,
+        decoration: BoxDecoration(
+          color: this.actionColor,
+          borderRadius: actionButtonBorderRadius,
+        ),
+        child: Material(
+            child: InkWell(
+              onTap: this.actionCallback,
+              customBorder: RoundedRectangleBorder(
+                  borderRadius: actionButtonBorderRadius),
+              child: Center(
+                child: Text(
+                  this.actionText,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+            color: Colors.transparent),
+      ),
+    );
+
     return Dialog(
       child: Column(mainAxisSize: MainAxisSize.min, children: [
         this.content,
-        FractionallySizedBox(
-          widthFactor: 1,
-          child: GestureDetector(
-            onTap: this.actionCallback,
-            child: Container(
-              height: 48,
-              decoration: const BoxDecoration(
-                color: TransignColors.PrimaryColor,
-                borderRadius: const BorderRadius.only(
-                  topLeft: const Radius.circular(0),
-                  topRight: const Radius.circular(0),
-                  bottomLeft: const Radius.circular(8),
-                  bottomRight: const Radius.circular(8),
-                ),
-              ),
-              child: Center(
-                child: Text(this.actionText,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                    ),
-                    textAlign: TextAlign.center),
-              ),
-            ),
-          ),
-        ),
+        actionButton, // action button
       ]),
       shape: const RoundedRectangleBorder(
         borderRadius: const BorderRadius.all(
