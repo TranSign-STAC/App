@@ -1,3 +1,4 @@
+import 'package:app/src/views/screens/camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -29,12 +30,15 @@ class TranslationBar extends StatelessWidget {
                 const SizedBox(
                   width: 8,
                 ),
-                SvgPicture.asset(
-                  "assets/images/crossed_arrows_small.svg",
-                  width: 24,
-                  height: 24,
-                  fit: BoxFit.cover,
-                ),
+                GestureDetector(
+                    child: SvgPicture.asset(
+                      "assets/images/crossed_arrows_small.svg",
+                      width: 24,
+                      height: 24,
+                      fit: BoxFit.cover,
+                    ),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => CameraScreen()))),
                 const SizedBox(
                   width: 8,
                 ),
