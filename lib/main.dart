@@ -4,6 +4,7 @@ import 'package:app/src/views/screens/home/home.dart';
 import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
