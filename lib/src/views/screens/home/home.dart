@@ -24,17 +24,22 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         children: [
           TranslationBar(),
-          TextField(
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-              decoration: const InputDecoration(
-                  contentPadding: const EdgeInsets.all(24.0),
-                  border: InputBorder.none,
-                  hintText: '번역할 텍스트를 입력해주세요.'),
-              controller: this.koreanTextController,
-              onChanged: (text) => {
-                    setState(() =>
-                        {this.translationButtonEnabled = text.length != 0})
-                  }),
+          Expanded(
+            child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+                decoration: const InputDecoration(
+                    contentPadding: const EdgeInsets.all(24.0),
+                    border: InputBorder.none,
+                    hintText: '번역할 텍스트를 입력해주세요.'),
+                controller: this.koreanTextController,
+                onChanged: (text) => {
+                      setState(() =>
+                          {this.translationButtonEnabled = text.length != 0})
+                    }),
+          ),
           Expanded(
             child: Align(
               alignment: Alignment.bottomCenter,
@@ -42,6 +47,49 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  Container(
+                    child: Container(
+                      child: Row(
+                        children: [
+                          /// Detected as Icon
+                          /// FIXME: Check your design. this is an icon of node "mic/Fill". we couldn't any matching flutter native icon, so we uploaded the asset to the cloud, load from it.
+                          SvgPicture.asset(
+                            "assets/images/mic.svg",
+                            width: 24,
+                            height: 24,
+                            fit: BoxFit.cover,
+                          ),
+                          SizedBox(
+                            width: 8,
+                          ),
+                          SizedBox(
+                              child: Text(
+                                "음성번역",
+                                style: TextStyle(
+                                  color: TransignColors.PrimaryColor,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                              width: 96),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.min,
+                      ),
+                      height: 56,
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(40),
+                        boxShadow: [
+                          BoxShadow(color: Color(0x19000000), blurRadius: 10)
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 24)),
                   BottomButton(
                     "번역하기",
                     onPressed: () {
