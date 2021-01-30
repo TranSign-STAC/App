@@ -157,13 +157,15 @@ Widget _drawer() {
         ),
       ),
     ),
-    const ListTile(
+    ListTile(
       title: const Text(
         "번역즐겨찾기",
         style: TextStyle(
           fontWeight: FontWeight.w400,
         ),
       ),
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => FavoriteScreen())),
     ),
     Expanded(
       child: Column(
