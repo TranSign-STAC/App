@@ -19,9 +19,11 @@ class TranslationResultScreen extends StatelessWidget {
           TranslationBar(),
           SignLanguageVideoPlayer(),
           SpeedController(),
-          Padding(
-            padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
-            child: TranslationBottom(this.text),
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(24, 16, 24, 0),
+              child: TranslationBottom(this.text),
+            ),
           ),
         ],
       ),
