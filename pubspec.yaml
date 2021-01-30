@@ -65,6 +65,8 @@ flutter:
         - assets/images/back_arrow_black.svg
         - assets/images/back_arrow_white.svg
         - assets/images/big_logo.svg
+        - assets/images/checkmark-filled.svg
+        - assets/images/checkmark-outlined.svg
         - assets/images/crossed_arrows_big.svg
         - assets/images/crossed_arrows_small.svg
         - assets/images/flash.svg
@@ -72,6 +74,8 @@ flutter:
         - assets/images/reverse_camera.svg
         - assets/images/small_logo.svg
         - assets/images/speedmeter.svg
+        - assets/images/star-filled.svg
+        - assets/images/star-outlined.svg
     fonts:
         - family: NotoSans
           fonts:
