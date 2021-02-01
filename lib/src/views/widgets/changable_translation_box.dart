@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import 'translation_box.dart';
 
 class ChangableTranslationBox extends StatefulWidget {
   const ChangableTranslationBox(
     this.text, {
-    this.isEnabled = false,
+    this.marked = true,
     @required this.onEnabled,
     @required this.onDisabled,
     @required this.enabledButtonIcon,
     @required this.disabledButtonIcon,
   });
-  final bool isEnabled;
+  final bool marked;
   final String text;
   final Widget enabledButtonIcon;
   final Widget disabledButtonIcon;
@@ -27,7 +26,7 @@ class _ChangableTranslationBox extends State<ChangableTranslationBox> {
   @override
   void initState() {
     setState(() {
-      this.isEnabled = widget.isEnabled;
+      this.isEnabled = widget.marked;
     });
     super.initState();
   }
