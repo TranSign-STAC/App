@@ -8,14 +8,18 @@ class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title,
     this.actions,
     this.color = Colors.white,
-    this.enableBackButton = false,
+    this.centerTitle = true,
     this.enableDarkMode = false,
+    this.enableBackButton = false,
+    this.leading,
   });
   final Widget title;
   final List<Widget> actions;
   final Color color;
-  final bool enableBackButton;
+  final bool centerTitle;
   final bool enableDarkMode;
+  final bool enableBackButton;
+  final Widget leading;
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
@@ -29,7 +33,7 @@ class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
         backgroundColor: this.color,
         elevation: 0,
         brightness: this.enableDarkMode ? Brightness.dark : Brightness.light,
-        centerTitle: true,
+        centerTitle: this.centerTitle,
         iconTheme: const IconThemeData(color: TransignColors.BlackScale),
         title: title == null
             ? SvgPicture.asset('assets/images/small_logo.svg')
@@ -39,7 +43,7 @@ class TransignAppBar extends StatelessWidget implements PreferredSizeWidget {
                 icon: SvgPicture.asset(backButtonPath),
                 onPressed: () => Navigator.of(context).pop(),
               )
-            : null,
+            : this.leading,
         actions: this.actions);
   }
 }
