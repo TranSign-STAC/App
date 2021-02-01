@@ -69,6 +69,7 @@ flutter:
         - assets/images/checkmark-outlined.svg
         - assets/images/crossed_arrows_big.svg
         - assets/images/crossed_arrows_small.svg
+        - assets/images/crossed_white.svg
         - assets/images/flash.svg
         - assets/images/mic.svg
         - assets/images/reverse_camera.svg
