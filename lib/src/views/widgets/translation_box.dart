@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TranslationBox extends StatelessWidget {
-  TranslationBox(this.text, {@required this.button});
+  const TranslationBox(this.text, {@required this.button});
   final Widget button;
-  String text;
+  final String text;
   @override
   Widget build(BuildContext context) {
     final bool expandablyLong = this.text.length > 68;
     final int shortableLength = expandablyLong ? 205 : 68;
-    if (this.text.length > shortableLength) {
-      this.text = this.text.substring(0, shortableLength + 1) + "...";
+    String shortenText = this.text;
+    if (shortenText.length > shortableLength) {
+      shortenText = this.text.substring(0, shortableLength + 1) + "...";
     }
     return Padding(
         padding: EdgeInsets.fromLTRB(16, 8, 16, 0),
@@ -18,7 +19,7 @@ class TranslationBox extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  text,
+                  shortenText,
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 12,
