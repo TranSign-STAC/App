@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:app/src/configs/theme.dart';
+import 'package:app/src/views/screens/favorite/favorite.dart';
+import 'package:app/src/views/screens/history/history.dart';
 import 'package:app/src/views/screens/treanslation_result/translation_result.dart';
 import 'package:app/src/views/widgets/appbar.dart';
 import 'package:app/src/views/widgets/bottom_button.dart';
@@ -120,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      drawer: _drawer(),
+      drawer: _drawer(context),
       drawerEdgeDragWidth: 0,
     );
   }
@@ -132,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget _drawer() {
+Widget _drawer(BuildContext context) {
   List<Widget> drawerContents = [
     Padding(
       padding: const EdgeInsets.only(left: 16),
@@ -149,13 +151,15 @@ Widget _drawer() {
         ),
       ),
     ),
-    const ListTile(
+    ListTile(
       title: const Text(
         "번역기록",
         style: const TextStyle(
           fontWeight: FontWeight.w400,
         ),
       ),
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => HistoryScreen())),
     ),
     ListTile(
       title: const Text(
