@@ -98,17 +98,17 @@ class _CameraScreenState extends State<CameraScreen> {
               if (mounted) setState(() {});
 
               var timer = Timer(Duration(seconds: 1), () {
-                Navigator.of(context, rootNavigator: true).pop();
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => TranslationResultScreen(videoFile.path),
-                ));
+                // Navigator.of(context, rootNavigator: true).pop();
+                // Navigator.of(context).push(MaterialPageRoute(
+                //   builder: (context) => TranslationResultScreen(videoFile.path),
+                // ));
               } // mimicking request
                   );
               showDialog(
                   barrierDismissible: false,
                   context: context,
                   builder: (BuildContext dialogContext) {
-                    return TranslatingDialog(() {
+                    return TranslatingDialog(cancelCallback: () {
                       timer.cancel();
                       Navigator.of(context, rootNavigator: true).pop();
                     });

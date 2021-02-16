@@ -7,8 +7,9 @@ import 'widgets/speed_controller.dart';
 import 'widgets/video_player.dart';
 
 class TranslationResultScreen extends StatelessWidget {
-  const TranslationResultScreen(this.text);
+  const TranslationResultScreen(this.text, this.renderUrl);
   final String text;
+  final String renderUrl;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,7 +18,7 @@ class TranslationResultScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           TranslationBar(),
-          SignLanguageVideoPlayer(),
+          SignLanguageVideoPlayer(this.renderUrl),
           SpeedController(),
           Expanded(
             child: Padding(
