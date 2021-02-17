@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TranslatingDialog extends StatelessWidget {
-  const TranslatingDialog(this.cancelCallback);
+  const TranslatingDialog({this.requestCallback, this.cancelCallback});
+  final VoidCallback requestCallback;
   final VoidCallback cancelCallback;
   @override
   Widget build(BuildContext context) {
+    this.requestCallback();
     Widget content = Container(
       child: Container(
         child: Column(
