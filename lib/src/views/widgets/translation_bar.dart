@@ -31,14 +31,16 @@ class TranslationBar extends StatelessWidget {
                   width: 8,
                 ),
                 GestureDetector(
-                    child: SvgPicture.asset(
-                      "assets/images/crossed_arrows_small.svg",
-                      width: 24,
-                      height: 24,
-                      fit: BoxFit.cover,
-                    ),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => CameraScreen()))),
+                  child: SvgPicture.asset(
+                    "assets/images/crossed_arrows_small.svg",
+                    width: 24,
+                    height: 24,
+                    fit: BoxFit.cover,
+                  ),
+                  // onTap: () => Navigator.of(context).push(
+                  //     MaterialPageRoute(builder: (context) => CameraScreen())),
+                  // disable an unreleased feature
+                ),
                 const SizedBox(
                   width: 8,
                 ),
