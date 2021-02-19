@@ -1,6 +1,8 @@
-import 'dart:async';
+import 'package:async/async.dart';
 
 import 'package:app/src/configs/theme.dart';
+import 'package:app/src/models/api.dart';
+import 'package:app/src/models/text_to_sign_lang.dart';
 import 'package:app/src/views/screens/favorite/favorite.dart';
 import 'package:app/src/views/screens/history/history.dart';
 import 'package:app/src/views/screens/treanslation_result/translation_result.dart';
@@ -8,8 +10,10 @@ import 'package:app/src/views/widgets/appbar.dart';
 import 'package:app/src/views/widgets/bottom_button.dart';
 import 'package:app/src/views/widgets/translating_dialog.dart';
 import 'package:app/src/views/widgets/translation_bar.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
@@ -18,6 +22,30 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   bool translationButtonEnabled = false;
   final koreanTextController = TextEditingController();
+  CancelableOperation translationRequest;
+
+  void _requestTranslation(BuildContext context, String text) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String uuid = prefs.getString('uuid');
+    final client = ApiClient(Dio(BaseOptions()));
+
+    this.translationRequest = CancelableOperation.fromFuture(
+      client.textToSignLang(
+        TransignTextToSignLangRequest(text: text, uuid: uuid),
+      ),
+      onCancel: () =>
+          Navigator.of(context, rootNavigator: true).pop(), // pop popup
+    );
+
+    translationRequest.value.then(
+      (data) {
+        Navigator.of(context, rootNavigator: true).pop(); // pop popup
+        Navigator.of(context).push(MaterialPageRoute(
+            builder: (context) =>
+                TranslationResultScreen(text, data.renderUrl)));
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,24 +123,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   BottomButton(
                     "번역하기",
                     onPressed: () {
-                      var timer = Timer(
-                        Duration(seconds: 1),
-                        () {
-                          Navigator.of(context, rootNavigator: true).pop();
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => TranslationResultScreen(
-                                  koreanTextController.text)));
-                        }, // mimicking request
-                      );
                       showDialog(
-                          barrierDismissible: false,
-                          context: context,
-                          builder: (BuildContext dialogContext) {
-                            return TranslatingDialog(() {
-                              timer.cancel();
-                              Navigator.of(context, rootNavigator: true).pop();
-                            });
-                          });
+                        barrierDismissible: false,
+                        context: context,
+                        builder: (BuildContext dialogContext) {
+                          return TranslatingDialog(
+                            requestCallback: () => this._requestTranslation(
+                                context, koreanTextController.text),
+                            cancelCallback: () {
+                              if (this.translationRequest != null) {
+                                this.translationRequest.cancel();
+                              }
+                            },
+                          );
+                        },
+                      );
                     },
                     enabled: this.translationButtonEnabled,
                   )
