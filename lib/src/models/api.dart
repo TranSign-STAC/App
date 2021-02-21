@@ -35,7 +35,7 @@ abstract class ApiClient {
       @Path("uuid") String uuid);
 
   @POST(Routes.favorite)
-  Future<TransignGetFavoriteTranslationResponse> setFavorite(
+  Future<TransignGetFavoriteTranslationResponse> toggleFavorite(
       @Body()
           TransignToggleFavoriteTranslationRequest
               transignToggleFavoriteTranslationRequest);

@@ -77,7 +77,7 @@ class _ApiClient implements ApiClient {
   }
 
   @override
-  Future<TransignGetFavoriteTranslationResponse> setFavorite(
+  Future<TransignGetFavoriteTranslationResponse> toggleFavorite(
       transignToggleFavoriteTranslationRequest) async {
     ArgumentError.checkNotNull(transignToggleFavoriteTranslationRequest,
         'transignToggleFavoriteTranslationRequest');
