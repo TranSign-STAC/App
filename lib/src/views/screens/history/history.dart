@@ -19,7 +19,7 @@ class _HistoryScreen extends State<HistoryScreen> {
   final client = ApiClient(Dio(BaseOptions()));
   String uuid;
   bool editingEnabled = false;
-  List<TranslationHistory> historyData = [];
+  List<TranslationHistory> historyData;
 
   Widget _translationBox(String text, bool marked, VoidCallback onTap) {
     String iconPath = this.editingEnabled
@@ -210,7 +210,7 @@ class _HistoryScreen extends State<HistoryScreen> {
     );
     Scaffold normalScaffold = Scaffold(
       appBar: normalAppBar,
-      body: this.historyData.length == 0
+      body: this.historyData == null
           ? Center(
               child: SizedBox(
                   child: CircularProgressIndicator(), width: 60, height: 60))
